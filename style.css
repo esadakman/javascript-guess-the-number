@@ -59,10 +59,10 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 2rem 0;
+    margin-top: 1rem;
 }
 
-#number {
+#input {
     width: 9rem;
     height: 2rem;
     border: 1px solid red;
@@ -78,4 +78,16 @@ section {
     margin-left: 2rem;
     text-align: center;
     cursor: pointer;
+}
+
+.feed-back {
+    text-align: center;
+    line-height: 2rem;
+    height: 5rem;
+    margin-top: 1rem;
+}
+
+.left-chance {
+    /* display: none; */
+    text-align: center;
 }
