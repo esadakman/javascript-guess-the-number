@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'Arcade';
+    src: url('./assets/ARCADE.TTF') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+p {
+    font-family: Arcade;
+    /* color: red; */
+    /* font-weight: 600; */
+}
