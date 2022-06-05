@@ -80,6 +80,25 @@ section {
     cursor: pointer;
 }
 
+#try-again,
+#play-again {
+    width: 8rem;
+    height: 2rem;
+    border: 1px solid red;
+    border-radius: 1rem;
+    margin-left: 2rem;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 1rem;
+    background-color: gray;
+    font-weight: 800;
+    display: none;
+}
+
+.try {
+    justify-content: center;
+}
+
 .feed-back {
     text-align: center;
     line-height: 2rem;

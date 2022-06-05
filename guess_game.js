@@ -9,7 +9,7 @@ aralıkSayı = Math.floor(rastgeleSayi / 10) * 10 - 10;
 let aralıkSayıTavan = aralıkSayı + 20;
 // random sayının hemen bulunmaması için ekstra bir -10 yaptım
 // !________________________________________________________________________
-let hak = 5;
+// let hak = 5;
 /* do {
   const tahmin = Number(prompt("Lütfen 0-100 arası bir sayı giriniz:"));
   if (tahmin != rastgeleSayi) {
@@ -50,9 +50,10 @@ let hak = 5;
 
 const inputBtn = document.querySelector("#input");
 const checkBtn = document.querySelector("#check");
+const numberGap = document.querySelector(".content").lastElementChild;
 const leftChances = document.querySelector(".left-chance");
-const guessleft = leftChances.firstElementChild.textContent;
-const guessPlace = leftChances.lastElementChild.textContent;
+const guessleft = leftChances.firstElementChild;
+const guessPlace = leftChances.lastElementChild;
 
 checkBtn.addEventListener("click", function () {
   console.log("object");
@@ -61,3 +62,170 @@ checkBtn.addEventListener("click", function () {
 inputBtn.addEventListener("click", function () {
   console.log("inputa tıkladınn");
 });
+
+let hak = 5;
+
+checkBtn.addEventListener("click", function (e) {
+  console.log("object");
+  game();
+  block();
+  e.preventDefault();
+});
+
+inputBtn.addEventListener("onclick", function () {
+  console.log("inputa tıkladınn");
+});
+
+function block() {
+  leftChances.style.display = "block";
+}
+
+function game() {
+  let guess = document.querySelector("#input").value;
+  if (hak > 0) {
+    if (guess !== rastgeleSayi) {
+      hak -= 1;
+      if (guess < rastgeleSayi) {
+        // console.log("up ⬆️");
+        guessPlace.textContent = `YOUR GUESS IS TOO LOW !`;
+        if (rastgeleSayi < 20) {
+          // console.log(`0 - 20 arası bir sayı giriniz`);
+          numberGap.textContent = `0 - 20 arası bir sayı giriniz`;
+        } else if (rastgeleSayi < 80) {
+          // console.log(`${aralıkSayı}- ${aralıkSayıTavan} arası bir sayı giriniz`);
+          numberGap.textContent = `${aralıkSayı}- ${aralıkSayıTavan} arası bir sayı giriniz`;
+        } else {
+          // console.log(`${aralıkSayı}- 100 arası bir sayı giriniz`);
+          numberGap.textContent = `${aralıkSayı}- 100 arası bir sayı giriniz`;
+        }
+      } else {
+        guessleft.value = `You have ${5 - hak} guess left`;
+
+        if (rastgeleSayi < 20) {
+          // console.log(`0 - 20 arası bir sayı giriniz`);
+          numberGap.textContent = `0 - 20 arası bir sayı giriniz`;
+        } else if (rastgeleSayi < 80) {
+          // console.log(`${aralıkSayı}- ${aralıkSayıTavan} arası bir sayı giriniz`);
+          numberGap.textContent = `${aralıkSayı}- ${aralıkSayıTavan} arası bir sayı giriniz`;
+        } else {
+          // console.log(`${aralıkSayı}- 100 arası bir sayı giriniz`);
+          numberGap.textContent = `${aralıkSayı}- 100 arası bir sayı giriniz`;
+        }
+      }
+    } else {
+      leftChances.innerHTML = `<h1>Tebrikler ${
+        6 - hak
+      } denemede bildiniz. 🥳</h1>`;
+    }
+  } else {
+    // console.log("Üzgünüz oyunu kaybettiniz 😿");
+    guessleft.textContent = `Üzgünüz oyunu kaybettiniz 😿`;
+    // console.log("Yine bekleriz");
+    guessPlace.textContent = `asdfgg`;
+  }
+}
+
+// ! ===========
+function oyun() {
+  // do {
+  const tahmin = inputBtn.textContent;
+  if (tahmin != rastgeleSayi) {
+    hak -= 1;
+    // console.log(`Dikkat ${hak} hakkınız kaldı`);
+    guessleft.value = `You have ${hak} guess left`;
+    // !=========================================================
+    if (tahmin < rastgeleSayi) {
+      // console.log("up ⬆️");
+      guessPlace.textContent = `YOUR GUESS IS TOO LOW !`;
+      if (rastgeleSayi < 20) {
+        // console.log(`0 - 20 arası bir sayı giriniz`);
+        numberGap.textContent = `0 - 20 arası bir sayı giriniz`;
+      } else if (rastgeleSayi < 80) {
+        // console.log(`${aralıkSayı}- ${aralıkSayıTavan} arası bir sayı giriniz`);
+        numberGap.textContent = `${aralıkSayı}- ${aralıkSayıTavan} arası bir sayı giriniz`;
+      } else {
+        // console.log(`${aralıkSayı}- 100 arası bir sayı giriniz`);
+        numberGap.textContent = `${aralıkSayı}- 100 arası bir sayı giriniz`;
+      }
+    }
+    // !=========================================================
+    else {
+      guessleft.textContent = "Azalt ⬇️";
+      if (rastgeleSayi < 20) {
+        // console.log(`0 - 20 arası bir sayı giriniz`);
+        numberGap.textContent = `0 - 20 arası bir sayı giriniz`;
+      } else if (rastgeleSayi < 80) {
+        // console.log(`${aralıkSayı}- ${aralıkSayıTavan} arası bir sayı giriniz`);
+        numberGap.textContent = `${aralıkSayı}- ${aralıkSayıTavan} arası bir sayı giriniz`;
+      } else {
+        // console.log(`${aralıkSayı}- 100 arası bir sayı giriniz`);
+        numberGap.textContent = `${aralıkSayı}- 100 arası bir sayı giriniz`;
+      }
+    }
+  } else {
+    // ? kazanma ihtimali
+    console.log(`Tebrikler ${6 - hak} denemede bildiniz. 🥳`);
+    leftChances.innerHTML = `<h1>Tebrikler ${
+      6 - hak
+    } denemede bildiniz. 🥳</h1>`;
+    // break;
+  }
+  if (hak === 0) {
+    // console.log("Üzgünüz oyunu kaybettiniz 😿");
+    guessleft.textContent = `Üzgünüz oyunu kaybettiniz 😿`;
+    // console.log("Yine bekleriz");
+    guessPlace.textContent = `asdfgg`;
+  }
+  // } while (hak > 0);
+}
+
+// function game() {
+//   let guess = document.querySelector("#input").value;
+//   let hak = 5;
+//   let aralıkSayı = 100 - rastgeleSayi;
+//   aralıkSayı = Math.floor(rastgeleSayi / 10) * 10 - 10;
+
+//   let aralıkSayıTavan = aralıkSayı + 20;
+//   if (hak > 0) {
+//     if (guess < rastgeleSayi) {
+//       hak--;
+//       guessPlace.textContent = `YOUR GUESS IS TOO LOW !`;
+//       guessleft.textContent = `You have ${hak} guess left`;
+
+//       if (rastgeleSayi < 20) {
+//         console.log(`0 - 20 arası bir sayı giriniz`);
+//         numberGap.textContent = `0 - 20 arası bir sayı giriniz`;
+//       } else if (rastgeleSayi < 80) {
+//         console.log(`${aralıkSayı}- ${aralıkSayıTavan} arası bir sayı giriniz`);
+//         numberGap.textContent = `${aralıkSayı}- ${aralıkSayıTavan} arası bir sayı giriniz`;
+//       } else {
+//         console.log(`${aralıkSayı}- 100 arası bir sayı giriniz`);
+//         numberGap.textContent = `${aralıkSayı}- 100 arası bir sayı giriniz`;
+//       }
+//     } else if (guess > rastgeleSayi) {
+//       hak--;
+//       guessPlace.textContent = `YOUR GUESS IS TOO HIGH !`;
+//       guessleft.value = `You have ${6 - hak} guess left`;
+
+//       if (rastgeleSayi < 20) {
+//         console.log(`0 - 20 arası bir sayı giriniz`);
+//         numberGap.textContent = `0 - 20 arası bir sayı giriniz`;
+//       } else if (rastgeleSayi < 80) {
+//         console.log(`${aralıkSayı}- ${aralıkSayıTavan} arası bir sayı giriniz`);
+//         numberGap.textContent = `${aralıkSayı}- ${aralıkSayıTavan} arası bir sayı giriniz`;
+//       } else {
+//         console.log(`${aralıkSayı}- 100 arası bir sayı giriniz`);
+//         numberGap.textContent = `${aralıkSayı}- 100 arası bir sayı giriniz`;
+//       }
+//     } else {
+//       hak--;
+//       leftChances.innerHTML = `<h1>Tebrikler ${
+//         6 - hak
+//       } denemede bildiniz. 🥳</h1>`;
+//     }
+//   } else if (hak == 0) {
+//     guessleft.textContent = `Üzgünüz oyunu kaybettiniz 😿`;
+//     console.log("Yine bekleriz");
+//     guessPlace.textContent = `asdfgg`;
+//   }
+// }
