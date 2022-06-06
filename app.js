@@ -9,19 +9,40 @@ const congrats = document.querySelector(".content").firstElementChild;
 const tryagain = document.querySelector("#try-again");
 const playagain = document.querySelector("#play-again");
 
+window.onload = () => {
+  getFocus();
+};
+
+function getFocus() {
+  inputBtnn.focus();
+}
+
 let rastgeleSayi = Math.floor(Math.random() * 100 + 1);
 console.log(rastgeleSayi);
 let hak = 4;
 
-window.onload = () => {
-  // javascriptKontrol();
-  inputBtnn.focus();
-};
+const audio = new Audio();
+audio.src = "./assets/jigsaw-laugh.mp3";
+const audio2 = new Audio();
+audio2.src = "./assets/jigsaw-i-want-to.mp3";
 
-// window.addEventListener("load", () => { });
+document.addEventListener(
+  "contextmenu",
+  (e) => {
+    alert("Don't try to cheat !");
+    e.preventDefault();
+  },
+  false
+);
+document.addEventListener("keydown", (e) => {
+  if (e.ctrlKey || e.keyCode == 123) {
+    alert("Don't try to cheat !");
+    e.stopPropagation();
+    e.preventDefault();
+  }
+});
 
 inputBtnn.addEventListener(`keydown`, (e) => {
-  console.log(e);
   if (e.code === "Enter") {
     checkBtn.click();
     e.preventDefault();
@@ -45,10 +66,11 @@ function game() {
   // *==================Aralık Sayı Tavan====================
   let aralıkSayıTavan = aralıkSayıTaban + 20;
   if (inputBtn == rastgeleSayi) {
+    audio2.play();
     hak -= 1;
     console.log(hak);
     congrats.textContent = "Congratulations ";
-    numberGap.textContent = `YOU GUESSED IN ${4 - hak} `;
+    numberGap.textContent = `YOU ${4 - hak}th try. `;
     leftChances.style.display = "none";
     playagain.style.display = "inline-block";
     checkBtn.style.display = "none";
@@ -69,22 +91,25 @@ function game() {
       guessleft.textContent = `The answer was ${rastgeleSayi}`;
     } else if (inputBtn < rastgeleSayi) {
       hak -= 1;
+      //  !
+      playAudio(audio);
       guessLeft();
       guessPlace.textContent = `YOU GUESSED TOO LOW !`;
       if (rastgeleSayi < 20) {
         numberGap.textContent = `Please enter a number between 0 - 20`;
-      } else if (rastgeleSayi < 80) {
+      } else if (rastgeleSayi < 90) {
         numberGap.textContent = `Please enter a number between ${aralıkSayıTaban}- ${aralıkSayıTavan}`;
       } else {
         numberGap.textContent = `Please enter a number between ${aralıkSayıTaban}- 100`;
       }
     } else if (inputBtn > rastgeleSayi) {
       hak -= 1;
+      playAudio(audio);
       guessLeft();
       guessPlace.textContent = `YOU GUESSED TOO HIGH !`;
       if (rastgeleSayi < 20) {
         numberGap.textContent = `Please enter a number between 0 - 20`;
-      } else if (rastgeleSayi < 80) {
+      } else if (rastgeleSayi < 90) {
         numberGap.textContent = `Please enter a number between ${aralıkSayıTaban}- ${aralıkSayıTavan}`;
       } else {
         numberGap.textContent = `Please enter a number between ${aralıkSayıTaban}- 100`;
@@ -137,4 +162,12 @@ function makeDisPlay() {
 
 function makeDisTry() {
   tryagain.style.display = "none";
+}
+
+function playAudio(x) {
+  audio.play(x);
+}
+
+function pauseAudio(x) {
+  audio.pause(x);
 }

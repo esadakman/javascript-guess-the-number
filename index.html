@@ -7,12 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guess</title>
     <link rel="stylesheet" href="./style.css">
+    <link rel="shortcut icon" href="#">
 </head>
 
 <body>
     <div class="win">
         <div class="winText">
-            <h1>I WANT A PLAY A GAME ! </h1>
+            <h1>I WANT TO A PLAY A GAME ! </h1>
         </div>
     </div>
 
@@ -24,9 +25,10 @@
 
             <div id="video-container">
                 <img src="./assets/pngegg.png" alt="">
-                <video width="450" height="390" controls autoplay>
+                <video width="450" height="390" autoplay muted>
                     <source src="./assets/saw_game.mp4" type="video/mp4">
                 </video>
+
 
             </div>
 
@@ -39,8 +41,7 @@
             </div>
             <div class="inputs">
                 <div class="input-box">
-                    <input type="text" id="input" name="number" value="" placeholder="Start Guessing ?" autofocus
-                        maxlength="3">
+                    <input type="text" id="input" name="number" value="" placeholder="Start Guessing ?" maxlength="3">
                     <button type="submit" id="check" class="submit-button">CHECK</button>
                 </div>
                 <!-- <div class="buttons">
@@ -64,7 +65,7 @@
 
 
 
-
+    <audio id="audio" src="./assets/jigsaw-sound.mp3"></audio>
     <script src=" ./app.js"></script>
     <!-- <script src="./guess_game.js"></script> -->
 </body>

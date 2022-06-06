@@ -66,9 +66,11 @@ section {
     opacity: .6;
     transform: rotateX(358deg) rotateY(23deg);
     transform-style: preserve-3d;
-    /* position: absolute; */
-    /* left: 5%; */
+
 }
+
+
+
 
 img {
     margin-left: 1rem;
@@ -78,6 +80,7 @@ img {
     height: 100%;
     left: 1rem;
     top: 1rem;
+
 }
 
 
@@ -125,7 +128,6 @@ img {
     align-items: center;
     justify-content: center;
     margin-top: 1rem;
-
 }
 
 #input {

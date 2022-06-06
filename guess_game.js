@@ -262,3 +262,22 @@ function block() {
 function canVer() {
   hak = 4;
 }
+
+const tryagain = document.querySelector("#try-again");
+const playagain = document.querySelector("#play-again");
+const audioElement = document.getElementById("audio");
+const redButton = document.getElementById("redBtn");
+let audioCount = 0;
+
+redButton.addEventListener("click", function () {
+  if (audioCount == 0) {
+    audioCount = 1;
+    audioElement.play();
+  } else {
+    audioCount = 0;
+    audioElement.pause();
+  }
+});
+
+const audio = new Audio();
+audio.src = "./assets/jigsaw-sound.mp3";
