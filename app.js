@@ -70,7 +70,7 @@ function game() {
     hak -= 1;
     console.log(hak);
     congrats.textContent = "Congratulations ";
-    numberGap.textContent = `YOU ${4 - hak}th try. `;
+    numberGap.textContent = `YOUR ${4 - hak}th try. `;
     leftChances.style.display = "none";
     playagain.style.display = "inline-block";
     checkBtn.style.display = "none";
