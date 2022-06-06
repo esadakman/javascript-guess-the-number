@@ -71,7 +71,7 @@ section {
 img {
     margin-left: 1rem;
     margin-top: 1rem;
-    z-index: 3;
+    /* z-index: 3; */
     position: absolute;
     height: 100%;
     left: 1rem;
@@ -81,13 +81,10 @@ img {
 
 .container {
     background-color: #1D1D1D;
-    /* width: 120rem; */
     height: 20rem;
     align-items: center;
     justify-content: center;
     width: 28rem;
-    /* position: absolute; */
-    /* right: 8%; */
     transform: rotateX(360deg) rotateY(330deg);
     transform-style: preserve-3d;
     border-bottom-left-radius: 25px 255px;
@@ -96,7 +93,6 @@ img {
     border-top-right-radius: 25px 225px;
     border-radius: 15px 225px 355px 15px 15px 355px 225px 15px;
     border: 3px solid rgb(105, 104, 104);
-    /* box-shadow: 0px 0px 44px 0px rgba(247, 0, 0, 0.5); */
     box-shadow: 0px 0px 30px 0px rgba(240, 184, 184, 0.4);
 
 }
@@ -171,6 +167,8 @@ img {
     font-family: Spooky;
     font-size: 1.5rem;
     line-height: 3rem;
+    color: white;
+    margin-top: 2rem;
 }
 
 /* ! Buttons */
@@ -178,27 +176,23 @@ img {
 button {
     background-color: hsl(2, 100%, 53%);
     cursor: pointer;
-    /* background-image: none; */
-    /* background-position: 0 90%; */
     background-repeat: repeat no-repeat;
     background-size: 4px 3px;
-    /* border-radius: 15px 225px 255px 15px 15px 255px 225px 15px; */
     border-style: solid;
     border-width: 2px;
     box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
     box-sizing: border-box;
-    color: #10100f;
+    color: #ffffff;
     font-family: Spooky;
     font-size: 1.5rem;
     line-height: 23px;
     outline: none;
-    padding: .75rem;
     transition: all 235ms ease-in-out;
     border-bottom-left-radius: 45px 225px;
     border-bottom-right-radius: 225px 45px;
     border-top-left-radius: 255px 45px;
     border-top-right-radius: 65px 285px;
-
+    padding: 1.2rem;
 }
 
 button:hover {
@@ -403,22 +397,30 @@ button:hover {
 }
 
 @media screen and (max-width: 1000px) {
+    body {
+        height: fit-content;
+    }
+
     section {
         display: flex;
         flex-direction: column-reverse;
         perspective: none;
+        margin: 2rem 0;
+    }
 
+    .win {
+        display: flex;
+        text-align: center;
+        margin-bottom: 1rem;
+        position: static;
     }
 
     .tv {
         position: static;
-
-
+        margin: 2rem 0;
     }
 
     .container {
         position: static;
-        margin-top: 6rem;
-
     }
 }
