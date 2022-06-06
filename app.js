@@ -5,6 +5,7 @@ const leftChances = document.querySelector(".left-chance");
 const guessleft = leftChances.lastElementChild;
 const guessPlace = leftChances.firstElementChild;
 const numberGap = document.querySelector(".content").lastElementChild;
+const congrats = document.querySelector(".content").firstElementChild;
 const tryagain = document.querySelector("#try-again");
 const playagain = document.querySelector("#play-again");
 
@@ -46,7 +47,8 @@ function game() {
   if (inputBtn == rastgeleSayi) {
     hak -= 1;
     console.log(hak);
-    numberGap.textContent = `Congratulations you guessed in ${4 - hak}  🥳`;
+    congrats.textContent = "Congratulations ";
+    numberGap.textContent = `YOU GUESSED IN ${4 - hak} `;
     leftChances.style.display = "none";
     playagain.style.display = "inline-block";
     checkBtn.style.display = "none";
@@ -57,7 +59,7 @@ function game() {
   } else {
     leftChances.style.display = "block";
     if (hak == 0) {
-      numberGap.textContent = `Game Over`;
+      numberGap.textContent = `GAME OVER`;
       leftChances.style.display = "none";
       tryagain.style.display = "inline-block";
       makeDisPlay();
@@ -109,6 +111,7 @@ tryagain.addEventListener("click", function (e) {
 playagain.addEventListener("click", function (e) {
   inputBtnn.value = "";
   guessleft.textContent = `You have 5 chance`;
+  congrats.textContent = "GUESS THE NUMBER ";
   guessPlace.textContent = "";
   numberGap.textContent = "Please enter a number between 1-100";
   rastgeleSayi = Math.floor(Math.random() * 100 + 1);
