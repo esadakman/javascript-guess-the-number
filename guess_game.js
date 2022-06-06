@@ -229,3 +229,36 @@ function oyun() {
 //     guessPlace.textContent = `asdfgg`;
 //   }
 // }
+
+tryagain.addEventListener("click", function (e) {
+  guessPlace.textContent = "Be more careful this time !";
+  makeDisTry();
+  reFill();
+  e.preventDefault;
+});
+
+playagain.addEventListener("click", function (e) {
+  guessPlace.textContent = "";
+  reFill();
+  makeDisPlay();
+  e.preventDefault;
+});
+
+function reFill() {
+  inputBtnn.value = "";
+  guessleft.textContent = `You have 5 chance`;
+  numberGap.textContent = "Please enter a number between 1-100";
+  checkBtn.style.display = "";
+  hak = 4;
+  leftChances.style.display = "";
+  rastgeleSayi = Math.floor(Math.random() * 100 + 1);
+  console.log(rastgeleSayi);
+}
+
+function block() {
+  leftChances.style.display = "";
+}
+
+function canVer() {
+  hak = 4;
+}

@@ -1,90 +1,134 @@
 // ? Variables
-// const inputBtn = document.querySelector("#input");
+const inputBtnn = document.querySelector("#input");
 const checkBtn = document.querySelector("#check");
 const leftChances = document.querySelector(".left-chance");
-const guessleft = leftChances.firstElementChild;
-const guessPlace = leftChances.lastElementChild;
+const guessleft = leftChances.lastElementChild;
+const guessPlace = leftChances.firstElementChild;
 const numberGap = document.querySelector(".content").lastElementChild;
 const tryagain = document.querySelector("#try-again");
 const playagain = document.querySelector("#play-again");
 
-// const rastgeleSayi = Math.floor(Math.random() * 100 + 1);
-// const rastgeleSayi = 79;
-const rastgeleSayi = Math.floor(Math.random() * 100 + 1);
+let rastgeleSayi = Math.floor(Math.random() * 100 + 1);
 console.log(rastgeleSayi);
-// *=================Aralık Sayı Taban==========================
-// let aralıkSayı = 100 - rastgeleSayi;
-// aralık sayıyı en yakın alt 10'lar basamağına yuvarlamak için ⬇️
-let aralıkSayıTaban = Math.floor(rastgeleSayi / 10) * 10 - 10;
-// *==================Aralık Sayı Tavan====================
-let aralıkSayıTavan = aralıkSayıTaban + 20;
-// random sayının hemen bulunmaması için ekstra bir -10 yaptım
-// !________________________________________________________________________
-// let hak = 5;
+let hak = 4;
 
-if (aralıkSayıTaban < 0) {
-  aralıkSayıTaban = 0;
-}
+window.onload = () => {
+  // javascriptKontrol();
+  inputBtnn.focus();
+};
 
 // window.addEventListener("load", () => { });
 
-function block() {
-  leftChances.style.display = "block";
-}
-// block();
-// e.preventDefault();
-let hak = 5;
-checkBtn.addEventListener("click", function (e) {
-  let inputBtn = document.getElementById("input").value;
+inputBtnn.addEventListener(`keydown`, (e) => {
+  console.log(e);
+  if (e.code === "Enter") {
+    checkBtn.click();
+    e.preventDefault();
+  }
+  if (e.keyCode === 13) {
+    checkBtn.click();
+    e.preventDefault();
+  }
+});
 
-  leftChances.style.display = "block";
-  // do {
+checkBtn.addEventListener("click", function (e) {
   console.log(hak);
-  if (hak > 0) {
-    if (inputBtn == rastgeleSayi) {
-      hak -= 1;
-      console.log(hak);
-      numberGap.textContent = `Tebrikler ${5 - hak} denemede bildiniz. 🥳`;
+  // console.log(rastgeleSayi);
+  game();
+  inputBtnn.value = "";
+  e.preventDefault();
+});
+function game() {
+  let inputBtn = inputBtnn.value;
+  let aralıkSayıTaban = Math.floor(rastgeleSayi / 10) * 10 - 10;
+  // *==================Aralık Sayı Tavan====================
+  let aralıkSayıTavan = aralıkSayıTaban + 20;
+  if (inputBtn == rastgeleSayi) {
+    hak -= 1;
+    console.log(hak);
+    numberGap.textContent = `Congratulations you guessed in ${4 - hak}  🥳`;
+    leftChances.style.display = "none";
+    playagain.style.display = "inline-block";
+    checkBtn.style.display = "none";
+    inputBtnn.style.display = "none";
+  } else if (inputBtn > 100 || inputBtn < 0 || inputBtn == "") {
+    numberGap.textContent = `Please enter a valid  number`;
+    guessPlace.textContent = "";
+  } else {
+    leftChances.style.display = "block";
+    if (hak == 0) {
+      numberGap.textContent = `Game Over`;
       leftChances.style.display = "none";
-      playagain.style.display = "inline-block";
-      // e.target.removeEventListener("click",   ,false);
+      tryagain.style.display = "inline-block";
+      makeDisPlay();
+      checkBtn.style.display = "none";
+      inputBtnn.style.display = "none";
     } else if (inputBtn < rastgeleSayi) {
       hak -= 1;
-      guessleft.textContent = `You have ${hak} guess left`;
+      guessLeft();
       guessPlace.textContent = `YOU GUESSED TOO LOW !`;
       if (rastgeleSayi < 20) {
-        // console.log(`0 - 20 arası bir sayı giriniz`);
-        numberGap.textContent = `0 - 20 arası bir sayı giriniz`;
+        numberGap.textContent = `Please enter a number between 0 - 20`;
       } else if (rastgeleSayi < 80) {
-        // console.log(`${aralıkSayı}- ${aralıkSayıTavan} arası bir sayı giriniz`);
-        numberGap.textContent = `${aralıkSayıTaban}- ${aralıkSayıTavan} arası bir sayı giriniz`;
+        numberGap.textContent = `Please enter a number between ${aralıkSayıTaban}- ${aralıkSayıTavan}`;
       } else {
-        // console.log(`${aralıkSayı}- 100 arası bir sayı giriniz`);
-        numberGap.textContent = `${aralıkSayıTaban}- 100 arası bir sayı giriniz`;
+        numberGap.textContent = `Please enter a number between ${aralıkSayıTaban}- 100`;
       }
     } else if (inputBtn > rastgeleSayi) {
       hak -= 1;
-      guessleft.textContent = `You have ${hak} guess left`;
+      guessLeft();
       guessPlace.textContent = `YOU GUESSED TOO HIGH !`;
       if (rastgeleSayi < 20) {
-        // console.log(`0 - 20 arası bir sayı giriniz`);
-        numberGap.textContent = `0 - 20 arası bir sayı giriniz`;
+        numberGap.textContent = `Please enter a number between 0 - 20`;
       } else if (rastgeleSayi < 80) {
-        // console.log(`${aralıkSayı}- ${aralıkSayıTavan} arası bir sayı giriniz`);
-        numberGap.textContent = `${aralıkSayıTaban}- ${aralıkSayıTavan} arası bir sayı giriniz`;
+        numberGap.textContent = `Please enter a number between ${aralıkSayıTaban}- ${aralıkSayıTavan}`;
       } else {
-        // console.log(`${aralıkSayı}- 100 arası bir sayı giriniz`);
-        numberGap.textContent = `${aralıkSayıTaban}- 100 arası bir sayı giriniz`;
+        numberGap.textContent = `Please enter a number between ${aralıkSayıTaban}- 100`;
       }
     } else {
-      numberGap.textContent = `wrong input`;
+      numberGap.textContent = `Wrong Input`;
     }
-    // } while (hak > 0);
-  } else {
-    numberGap.textContent = `Try Again`;
-    leftChances.style.display = "none";
-    tryagain.style.display = "inline-block";
-    playagain.style.display = "none";
   }
-  e.preventDefault();
+}
+
+tryagain.addEventListener("click", function (e) {
+  inputBtnn.value = "";
+  guessleft.textContent = `You have 5 chance`;
+  guessPlace.textContent = "Be more careful this time !";
+  numberGap.textContent = "Please enter a number between 1-100";
+  hak = 4;
+  makeDisTry();
+  leftChances.style.display = "";
+  rastgeleSayi = Math.floor(Math.random() * 100 + 1);
+  console.log(rastgeleSayi);
+  checkBtn.style.display = "";
+  inputBtnn.style.display = "";
+  e.preventDefault;
 });
+
+playagain.addEventListener("click", function (e) {
+  inputBtnn.value = "";
+  guessleft.textContent = `You have 5 chance`;
+  guessPlace.textContent = "";
+  numberGap.textContent = "Please enter a number between 1-100";
+  rastgeleSayi = Math.floor(Math.random() * 100 + 1);
+  console.log(rastgeleSayi);
+  hak = 4;
+  makeDisPlay();
+  leftChances.style.display = "";
+  checkBtn.style.display = "";
+  inputBtnn.style.display = "";
+  e.preventDefault;
+});
+
+function guessLeft() {
+  guessleft.textContent = `You have ${hak + 1} guess left`;
+}
+
+function makeDisPlay() {
+  playagain.style.display = "none";
+}
+
+function makeDisTry() {
+  tryagain.style.display = "none";
+}

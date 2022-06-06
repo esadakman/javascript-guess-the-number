@@ -11,10 +11,22 @@
 }
 
 body {
-    /* background-color: black; */
+    background-color: black;
     width: 100vw;
     height: 100vh;
+}
 
+.win {
+    display: flex;
+    width: 100vw;
+    position: absolute;
+    margin-top: 2rem;
+}
+
+.winText {
+    font-family: Danger;
+    letter-spacing: 1rem;
+    margin: auto;
 }
 
 .tv {
@@ -23,36 +35,60 @@ body {
     height: 360px;
     overflow: hidden;
     background-color: black;
+    opacity: .6;
+    transform: rotateX(358deg) rotateY(23deg);
+    transform-style: preserve-3d;
+    position: absolute;
+    left: 10%;
 }
 
 img {
-    /* z-index: 3; */
+    margin-left: 1rem;
+    margin-top: 1rem;
+    z-index: 3;
     position: absolute;
     height: 100%;
     left: 1rem;
     top: 1rem;
+    /* background-image: linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%); */
 }
+
+
+/* ! ========================== Light */
 
 section {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     height: 100%;
     align-items: center;
+    /* display: none; */
+    perspective: 1000px;
+
+
 }
 
 .container {
-    /* display: flex; */
-    background-color: #ddd;
-    /* height: 20rem; */
+    background-color: #262626;
+    height: 20rem;
     align-items: center;
     justify-content: center;
-    width: 50vw;
+    width: 26rem;
+    position: absolute;
+    right: 10%;
+    transform: rotateX(360deg) rotateY(330deg);
+    transform-style: preserve-3d;
 }
 
 .content {
     text-align: center;
     align-items: center;
     line-height: 3rem;
+}
+
+.content h1:first-child {
+    font-family: Danger;
+    letter-spacing: 0.5rem;
+    color: red;
 }
 
 .inputs {
@@ -63,36 +99,28 @@ section {
 }
 
 #input {
-    width: 9rem;
-    height: 2rem;
-    border: 1px solid red;
+    width: 10rem;
+    height: 3rem;
+    border: 3px solid red;
     border-radius: 1rem;
     text-align: center;
+
+    border-radius: 15px 225px 255px 15px 15px 255px 225px 15px;
+    border-style: solid;
+    border-width: 3px;
+    box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
+    outline: none;
+    transition: all 235ms ease-in-out;
+    border-bottom-left-radius: 15px 255px;
+    border-bottom-right-radius: 225px 15px;
+    border-top-left-radius: 255px 15px;
+    border-top-right-radius: 15px 225px;
+    margin-right: 2rem;
 }
 
-#check {
-    width: 5rem;
-    height: 2rem;
-    border: 1px solid red;
-    border-radius: 1rem;
-    margin-left: 2rem;
-    text-align: center;
-    cursor: pointer;
-}
+#input::placeholder {
+    font-size: 1rem;
 
-#try-again,
-#play-again {
-    width: 8rem;
-    height: 2rem;
-    border: 1px solid red;
-    border-radius: 1rem;
-    margin-left: 2rem;
-    text-align: center;
-    cursor: pointer;
-    margin-top: 1rem;
-    background-color: gray;
-    font-weight: 800;
-    display: none;
 }
 
 .try {
@@ -109,4 +137,249 @@ section {
 .left-chance {
     /* display: none; */
     text-align: center;
+}
+
+
+
+
+/* ! Buttons */
+
+button {
+
+    align-self: center;
+    background-color: hsl(2, 100%, 53%);
+    background-image: none;
+    background-position: 0 90%;
+    background-repeat: repeat no-repeat;
+    background-size: 4px 3px;
+    border-radius: 15px 225px 255px 15px 15px 255px 225px 15px;
+    border-style: solid;
+    border-width: 2px;
+    box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
+    box-sizing: border-box;
+    color: #fafaf7;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Neucha, sans-serif;
+    font-size: 1rem;
+    /* line-height: 23px; */
+    /* outline: none; */
+    padding: .75rem;
+    /* text-decoration: none; */
+    transition: all 235ms ease-in-out;
+    border-bottom-left-radius: 15px 255px;
+    border-bottom-right-radius: 225px 15px;
+    border-top-left-radius: 255px 15px;
+    border-top-right-radius: 15px 225px;
+
+}
+
+button:hover {
+    box-shadow: rgba(0, 0, 0, .3) 2px 8px 8px -5px;
+    /* transform: translate3d(0, 2px, 0); */
+}
+
+button :focus {
+    box-shadow: rgba(0, 0, 0, .3) 2px 8px 4px -6px;
+}
+
+
+/* #check {
+    width: 5rem;
+    height: 2rem;
+    border: 1px solid red;
+    border-radius: 1rem;
+    margin-left: 2rem;
+    text-align: center;
+    cursor: pointer;
+} */
+
+#try-again,
+#play-again {
+    /* width: 8rem;
+    height: 2rem;
+    border: 1px solid red;
+    border-radius: 1rem;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 1rem;
+    background-color: gray;
+    font-weight: 800; */
+    display: none;
+}
+
+/* ! GLITCH */
+
+.winText {
+    animation: shine 2s forwards, blink 3s 2s infinite;
+}
+
+.winText {
+    animation: shine 2s forwards, blink 10s 1s infinite;
+}
+
+@keyframes blink {
+
+    0%,
+    22%,
+    36%,
+    75% {
+        color: #ffffffbc;
+        text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem hsl(2, 100%, 53%),
+            -0.2rem 0.1rem 1rem hsl(2, 100%, 53%), 0.2rem 0.1rem 1rem hsl(2, 100%, 53%),
+            0 -0.5rem 2rem #161213, 0 0.5rem 3rem hsl(2, 100%, 53%);
+    }
+
+    28%,
+    33% {
+        color: #d83a3a;
+        text-shadow: none;
+    }
+
+    82%,
+    97% {
+        color: hsl(2, 100%, 53%);
+        text-shadow: none;
+    }
+}
+
+
+@keyframes shine {
+    0% {
+        color: hsl(2, 100%, 53%);
+        text-shadow: none;
+    }
+
+    100% {
+        color: #e76e6e;
+        text-shadow: 0 0 0.6rem #870808, 0 0 1.5rem #d31e1e,
+            -0.2rem 0.1rem 1rem #301e1e, 0.2rem 0.1rem 1rem #f60d0d,
+            0 -0.5rem 2rem #150808, 0 0.5rem 3rem #ff0000;
+    }
+}
+
+@keyframes flicker {
+    from {
+        opacity: 1;
+    }
+
+    4% {
+        opacity: 0.9;
+    }
+
+    6% {
+        opacity: 0.85;
+    }
+
+    8% {
+        opacity: 0.95;
+    }
+
+    10% {
+        opacity: 0.9;
+    }
+
+    11% {
+        opacity: 0.922;
+    }
+
+    12% {
+        opacity: 0.9;
+    }
+
+    14% {
+        opacity: 0.95;
+    }
+
+    16% {
+        opacity: 0.98;
+    }
+
+    17% {
+        opacity: 0.9;
+    }
+
+    19% {
+        opacity: 0.93;
+    }
+
+    20% {
+        opacity: 0.99;
+    }
+
+    24% {
+        opacity: 1;
+    }
+
+    26% {
+        opacity: 0.94;
+    }
+
+    28% {
+        opacity: 0.98;
+    }
+
+    37% {
+        opacity: 0.93;
+    }
+
+    38% {
+        opacity: 0.5;
+    }
+
+    39% {
+        opacity: 0.96;
+    }
+
+    42% {
+        opacity: 1;
+    }
+
+    44% {
+        opacity: 0.97;
+    }
+
+    46% {
+        opacity: 0.94;
+    }
+
+    56% {
+        opacity: 0.9;
+    }
+
+    58% {
+        opacity: 0.9;
+    }
+
+    60% {
+        opacity: 0.99;
+    }
+
+    68% {
+        opacity: 1;
+    }
+
+    70% {
+        opacity: 0.9;
+    }
+
+    72% {
+        opacity: 0.95;
+    }
+
+    93% {
+        opacity: 0.93;
+    }
+
+    95% {
+        opacity: 0.95;
+    }
+
+    97% {
+        opacity: 0.93;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
