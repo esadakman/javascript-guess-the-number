@@ -60,11 +60,13 @@ function game() {
     leftChances.style.display = "block";
     if (hak == 0) {
       numberGap.textContent = `GAME OVER`;
-      leftChances.style.display = "none";
+      guessPlace.style.display = "none";
       tryagain.style.display = "inline-block";
+      tryagain.style.marginTop = "3rem";
       makeDisPlay();
       checkBtn.style.display = "none";
       inputBtnn.style.display = "none";
+      guessleft.textContent = `The answer was ${rastgeleSayi}`;
     } else if (inputBtn < rastgeleSayi) {
       hak -= 1;
       guessLeft();
@@ -96,6 +98,7 @@ function game() {
 tryagain.addEventListener("click", function (e) {
   inputBtnn.value = "";
   guessleft.textContent = `You have 5 chance`;
+  guessPlace.style.display = "";
   guessPlace.textContent = "Be more careful this time !";
   numberGap.textContent = "Please enter a number between 1-100";
   hak = 4;

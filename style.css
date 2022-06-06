@@ -25,6 +25,7 @@ body {
     width: 100vw;
     height: 100vh;
 
+
 }
 
 .win {
@@ -61,6 +62,7 @@ section {
     height: 360px;
     overflow: hidden;
     background-color: black;
+
     opacity: .6;
     transform: rotateX(358deg) rotateY(23deg);
     transform-style: preserve-3d;
@@ -81,7 +83,7 @@ img {
 
 .container {
     background-color: #1D1D1D;
-    height: 20rem;
+    height: 22rem;
     align-items: center;
     justify-content: center;
     width: 28rem;
@@ -107,13 +109,14 @@ img {
     font-family: Danger;
     letter-spacing: 0.5rem;
     color: rgb(255, 255, 255);
-    margin: 1rem;
+    margin: 1.5rem 0;
 }
 
 .content h1:last-child {
     font-family: Spooky;
-    color: rgb(255, 0, 0);
+    color: rgb(255, 255, 255);
     letter-spacing: .1rem;
+
 
 }
 
@@ -159,6 +162,7 @@ img {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 .left-chance {
@@ -169,6 +173,13 @@ img {
     line-height: 3rem;
     color: white;
     margin-top: 2rem;
+}
+
+.left-chance h2 {
+    color: hsl(2, 100%, 53%, .8);
+    font-family: Danger;
+    margin-bottom: 1rem;
+    /* letter-spacing: 1px; */
 }
 
 /* ! Buttons */
@@ -208,11 +219,16 @@ button:hover {
 
 /* ! GLITCH */
 
-.winText {
+.winText,
+.content h1:nth-child(1) {
     animation: shine 2s forwards, blink 5s 2s infinite;
     animation: shine 2s forwards, blink 10s 1s infinite;
     z-index: 999;
 }
+
+
+
+
 
 
 @keyframes blink {
@@ -422,5 +438,71 @@ button:hover {
 
     .container {
         position: static;
+    }
+}
+
+
+
+@-webkit-keyframes swing {
+    15% {
+        -webkit-transform: translateX(5px);
+        transform: translateX(5px);
+    }
+
+    30% {
+        -webkit-transform: translateX(-5px);
+        transform: translateX(-5px);
+    }
+
+    50% {
+        -webkit-transform: translateX(3px);
+        transform: translateX(3px);
+    }
+
+    65% {
+        -webkit-transform: translateX(-3px);
+        transform: translateX(-3px);
+    }
+
+    80% {
+        -webkit-transform: translateX(2px);
+        transform: translateX(2px);
+    }
+
+    100% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+}
+
+@keyframes swing {
+    15% {
+        -webkit-transform: translateX(5px);
+        transform: translateX(5px);
+    }
+
+    30% {
+        -webkit-transform: translateX(-5px);
+        transform: translateX(-5px);
+    }
+
+    50% {
+        -webkit-transform: translateX(3px);
+        transform: translateX(3px);
+    }
+
+    65% {
+        -webkit-transform: translateX(-3px);
+        transform: translateX(-3px);
+    }
+
+    80% {
+        -webkit-transform: translateX(2px);
+        transform: translateX(2px);
+    }
+
+    100% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
     }
 }
