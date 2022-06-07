@@ -18,29 +18,13 @@ function getFocus() {
 }
 
 let rastgeleSayi = Math.floor(Math.random() * 100 + 1);
-console.log(rastgeleSayi);
+// console.log(rastgeleSayi);
 let hak = 4;
 
 const audio = new Audio();
 audio.src = "./assets/jigsaw-laugh.mp3";
 const audio2 = new Audio();
 audio2.src = "./assets/jigsaw-i-want-to.mp3";
-
-document.addEventListener(
-  "contextmenu",
-  (e) => {
-    alert("Don't try to cheat !");
-    e.preventDefault();
-  },
-  false
-);
-document.addEventListener("keydown", (e) => {
-  if (e.ctrlKey || e.keyCode == 123) {
-    alert("Don't try to cheat !");
-    e.stopPropagation();
-    e.preventDefault();
-  }
-});
 
 inputBtnn.addEventListener(`keydown`, (e) => {
   if (e.code === "Enter") {
@@ -54,23 +38,25 @@ inputBtnn.addEventListener(`keydown`, (e) => {
 });
 
 checkBtn.addEventListener("click", function (e) {
-  console.log(hak);
-  // console.log(rastgeleSayi);
+  // console.log(hak);
   game();
   inputBtnn.value = "";
   e.preventDefault();
 });
+
+// ! Game Function
+
 function game() {
   let inputBtn = inputBtnn.value;
   let aralıkSayıTaban = Math.floor(rastgeleSayi / 10) * 10 - 10;
   // *==================Aralık Sayı Tavan====================
   let aralıkSayıTavan = aralıkSayıTaban + 20;
   if (inputBtn == rastgeleSayi) {
-    audio2.play();
+    playAudio2();
     hak -= 1;
     console.log(hak);
     congrats.textContent = "Congratulations ";
-    numberGap.textContent = `YOUR ${4 - hak}th TRY. `;
+    numberGap.textContent = `YOUR ${4 - hak}th try. `;
     leftChances.style.display = "none";
     playagain.style.display = "inline-block";
     checkBtn.style.display = "none";
@@ -130,7 +116,7 @@ tryagain.addEventListener("click", function (e) {
   makeDisTry();
   leftChances.style.display = "";
   rastgeleSayi = Math.floor(Math.random() * 100 + 1);
-  console.log(rastgeleSayi);
+  // console.log(rastgeleSayi);
   checkBtn.style.display = "";
   inputBtnn.style.display = "";
   e.preventDefault;
@@ -143,7 +129,7 @@ playagain.addEventListener("click", function (e) {
   guessPlace.textContent = "";
   numberGap.textContent = "Please enter a number between 1-100";
   rastgeleSayi = Math.floor(Math.random() * 100 + 1);
-  console.log(rastgeleSayi);
+  // console.log(rastgeleSayi);
   hak = 4;
   makeDisPlay();
   leftChances.style.display = "";
@@ -164,10 +150,34 @@ function makeDisTry() {
   tryagain.style.display = "none";
 }
 
-function playAudio(x) {
-  audio.play(x);
+// !Audio functions
+
+function playAudio() {
+  audio.play();
 }
 
-function pauseAudio(x) {
-  audio.pause(x);
+function pauseAudio() {
+  audio.pause();
 }
+
+function playAudio2() {
+  audio2.play();
+}
+
+// ! Disable right click and f12 buttton
+
+document.addEventListener(
+  "contextmenu",
+  (e) => {
+    alert("Don't try to cheat !");
+    e.preventDefault();
+  },
+  false
+);
+document.addEventListener("keydown", (e) => {
+  if (e.ctrlKey || e.keyCode == 123) {
+    alert("Don't try to cheat !");
+    e.stopPropagation();
+    e.preventDefault();
+  }
+});
